@@ -6,6 +6,7 @@
     <modules>
         <module>eureka</module>
         <module>clientService</module>
+        <module>accountService</module>
     </modules>
 
     <parent>
