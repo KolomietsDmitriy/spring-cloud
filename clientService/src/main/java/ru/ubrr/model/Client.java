@@ -1,7 +1,7 @@
-package ru.ubrr;
+package ru.ubrr.model;
 
 public interface Client {
-    int getId();
+    Integer getId();
     String getName();
 
 }

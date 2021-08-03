@@ -1,13 +1,16 @@
-package ru.ubrr;
+package ru.ubrr.dao;
 
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.ubrr.model.ClientEntity;
 
 @Component
+@RequiredArgsConstructor
 public class ClientDAO {
     @Autowired
-    private ClientRepository repo;
+    ClientRepository repo;
 
     public ClientEntity create(String name) {
         val client = new ClientEntity();
