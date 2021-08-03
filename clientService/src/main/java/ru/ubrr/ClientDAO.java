@@ -1,5 +1,6 @@
 package ru.ubrr;
 
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,13 +10,13 @@ public class ClientDAO {
     private ClientRepository repo;
 
     public ClientEntity create(String name) {
-        ClientEntity client = new ClientEntity();
+        val client = new ClientEntity();
         client.setName(name);
         return repo.save(client);
     }
 
-    public boolean update(Integer id, String name) {
-        ClientEntity client = repo.findById(id).orElse(null);
+    public boolean update(int id, String name) {
+        val client = repo.findById(id).orElse(null);
         if (client == null) {
             return false;
         } else {

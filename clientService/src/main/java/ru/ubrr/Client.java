@@ -1,7 +1,7 @@
 package ru.ubrr;
 
 public interface Client {
-    Integer getId();
+    int getId();
     String getName();
 
 }

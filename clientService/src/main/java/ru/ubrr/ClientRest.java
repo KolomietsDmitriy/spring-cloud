@@ -2,10 +2,7 @@ package ru.ubrr;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,13 +18,15 @@ public class ClientRest {
     @Autowired
     ClientRepository repo;
 
-    @RequestMapping("/create")
+    //    @RequestMapping("/create")
+    @GetMapping("create")
     public Client create(@RequestParam String name) {
         return dao.create(name);
     }
 
-    @RequestMapping("/update/{id}")
-    public ResponseEntity update(@PathVariable Integer id, @RequestParam String name) {
+    //    @RequestMapping("/update/{id}")
+    @PutMapping("{id}")
+    public ResponseEntity update(@PathVariable int id, @RequestParam String name) {
         if (dao.update(id, name)) {
             return new ResponseEntity(OK);
         } else {
@@ -35,18 +34,21 @@ public class ClientRest {
         }
     }
 
-    @RequestMapping("/delete")
-    public void delete(@PathVariable Integer id) {
+//    @RequestMapping("/delete")
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable int id) {
         repo.deleteById(id);
     }
 
-    @RequestMapping("/get")
+//    @RequestMapping("/get")
+    @GetMapping
     public List<ClientEntity> get() {
         return repo.findAll();
     }
 
-    @RequestMapping("/get/{id}")
-    public Client get(@PathVariable Integer id) {
+//    @RequestMapping("/get/{id}")
+    @GetMapping("{id}")
+    public Client get(@PathVariable int id) {
         return repo.findById(id).orElse(null);
     }
 }
