@@ -13,9 +13,7 @@ public class ClientDAO {
     ClientRepository repo;
 
     public ClientEntity create(String name) {
-        val client = new ClientEntity();
-        client.setName(name);
-        return repo.save(client);
+        return repo.save(new ClientEntity(name));
     }
 
     public boolean update(int id, String name) {

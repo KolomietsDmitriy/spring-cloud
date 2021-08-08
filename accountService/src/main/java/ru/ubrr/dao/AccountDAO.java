@@ -21,10 +21,8 @@ public class AccountDAO {
     AccountRepository repository;
 
     public AccountEntity create(Integer clientId) {
-        val account = new AccountEntity();
-        account.setClientId(clientId);
-        account.setBalance(ZERO);
-        return repository.save(account);
+
+        return repository.save(new AccountEntity(clientId, ZERO));
     }
 
     public boolean addBalance(Integer clientId, BigDecimal sum) {

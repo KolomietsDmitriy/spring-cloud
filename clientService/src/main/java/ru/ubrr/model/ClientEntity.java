@@ -1,9 +1,6 @@
 package ru.ubrr.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
@@ -12,19 +9,20 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
+import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @Entity
 @ToString
 @Setter
 @RequiredArgsConstructor
-//@NoArgsConstructor(access = PROTECTED)
+@NoArgsConstructor(access = PROTECTED)
 public class ClientEntity implements Client {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     Integer id;
-    String name;
+    @NonNull String name;
 
     @Override
 //    @Contract(value = "null -> false", pure = true)

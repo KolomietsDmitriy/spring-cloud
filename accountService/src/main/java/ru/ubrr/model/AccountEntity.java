@@ -1,9 +1,6 @@
 package ru.ubrr.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
@@ -14,19 +11,21 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.*;
+import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @Entity
 @ToString
 @Setter
 @RequiredArgsConstructor
+@NoArgsConstructor(access = PROTECTED)
 public class AccountEntity implements Account {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     Integer id;
-    Integer clientId;
-    BigDecimal balance;
+    @NonNull Integer clientId;
+    @NonNull BigDecimal balance;
 
     @Override
     public int hashCode() {
